@@ -26,6 +26,7 @@ section, header, nav {
     padding: 1rem;
     max-width: 60rem;
     margin: 1em auto;
+    border-radius: .5em;
 }
 header {
     text-align: center;
@@ -40,6 +41,7 @@ button {
     padding: .5em;
     border: none;
     margin: 1em;
+    border-radius: .25em;
     max-width: fit-content;
 }
 #start-quiz {
@@ -47,7 +49,7 @@ button {
     /* change display to none in code when quiz starts */
 }
 #buttonA, #buttonB, #buttonC, #buttonD {
-    min-width: 5em;
+    min-width: max-content;
 }
 .questions {
     display: none;
