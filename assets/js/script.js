@@ -44,6 +44,9 @@ var buttonD = document.querySelector("#buttonD");
 // var questionCounter = 0;
 var currentQuestion = 1;
 
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+
 // Store questions in array AND their respective 
 var question1 = {
     question: "How do you create a variable called 'myVariable' in Javascript?",
@@ -87,6 +90,7 @@ function questionSetup() {
         buttonB.textContent = question1.questionArr[1];
         buttonC.textContent = question1.questionArr[2]; // Correct Answer
         buttonD.textContent = question1.questionArr[3];
+        clickListen();
         return;
     }
     if (currentQuestion === 2) {
@@ -97,6 +101,7 @@ function questionSetup() {
         buttonB.textContent = question2.questionArr[1];
         buttonC.textContent = question2.questionArr[2];
         buttonD.textContent = question2.questionArr[3];
+        clickListen();
         return;
     }
     if (currentQuestion === 3) {
@@ -107,6 +112,7 @@ function questionSetup() {
         buttonB.textContent = question3.questionArr[1]; // Correct Answer
         buttonC.textContent = question3.questionArr[2];
         buttonD.textContent = question3.questionArr[3];
+        clickListen();
         return;
     }
     if (currentQuestion === 4) {
@@ -117,17 +123,87 @@ function questionSetup() {
         buttonB.textContent = question4.questionArr[1];
         buttonC.textContent = question4.questionArr[2];
         buttonD.textContent = question4.questionArr[3]; // Correct Answer
+        clickListen();
         return;
     }
     if (currentQuestion === 5) {
         // code that brings to entering name for scoreboard
+        headerText.textContent = "Quiz done! Here's your results";
+        questionGroup.setAttribute("style", "display: none");
+        document.querySelector(".question-text").setAttribute("style", "display: initial");
+        document.querySelector(".question-text").textContent = "Correct Answers: " + correctAnswers + ". Incorrect answers: " + incorrectAnswers + ".";
     }
     // Eventually get a for loop to iterate through each question to parse through.
     // OR make it so the correct answer is the LINK to the next set of questions
 }
 
-function questionSelect() {
-    
+function questionSelect(event) {
+    event.preventDefault();
+    // event.target.id to get the ID of the button that was pressed
+    // console.log(typeof event.target.id); String
+
+    if (currentQuestion === 1) {
+        // Move onto question 2, and check if they clicked on C[2]
+        if (event.target.id === "buttonC") {
+            console.log("Correct!");
+            correctAnswers++;
+        } else {
+            console.log("Incorrect!");
+            incorrectAnswers++;
+        }
+        currentQuestion++;
+        questionSetup();
+        return;
+    }
+    if (currentQuestion === 2) {
+        // A
+        if (event.target.id === "buttonA") {
+            console.log("Correct!");
+            correctAnswers++;
+        } else {
+            console.log("Incorrect!");
+            incorrectAnswers++;
+        }
+        currentQuestion++;
+        questionSetup();
+        return;
+    }
+    if (currentQuestion === 3) {
+        // B
+        if (event.target.id === "buttonB") {
+            console.log("Correct!");
+            correctAnswers++;
+        } else {
+            console.log("Incorrect!");
+            incorrectAnswers++;
+        }
+        currentQuestion++;
+        questionSetup();
+        return;
+    }
+    if (currentQuestion === 4) {
+        // D
+        if (event.target.id === "buttonD") {
+            console.log("Correct!");
+            correctAnswers++;
+        } else {
+            console.log("Incorrect!");
+            incorrectAnswers++;
+        }
+        currentQuestion++;
+        questionSetup();
+        return;
+    }
+    if (currentQuestion === 5) {
+
+    }
+}
+
+function clickListen() {
+    buttonA.addEventListener("click", questionSelect);
+    buttonB.addEventListener("click", questionSelect);
+    buttonC.addEventListener("click", questionSelect);
+    buttonD.addEventListener("click", questionSelect);
 }
 
 function startQuiz(event) {
@@ -146,8 +222,7 @@ function startQuiz(event) {
 
 // activates upon start quiz button click
 startQuizBtn.addEventListener("click", startQuiz);
-
-buttonA.addEventListener("click", );
-buttonB.addEventListener("click");
-buttonC.addEventListener("click");
-buttonD.addEventListener("click");
+// buttonA.addEventListener("click", questionSelect);
+// buttonB.addEventListener("click", questionSelect);
+// buttonC.addEventListener("click", questionSelect);
+// buttonD.addEventListener("click", questionSelect);
