@@ -4,11 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Coding Quiz</title>
 </head>
 <body>
-    
+    <!-- Top Navigatione pane -->
+    <nav>
+        <button id="scores">High Scores</button>
+        <p id="timer">60</p>
+    </nav>
+
+    <!-- Changeable Header text -->
+    <header>
+        <h1 id="header">Welcome to my coding quiz!</h1>
+        <p>The rules of the game are simple, this is a simple quiz to test your knowlege on some coding questions i made up on the spot!</p>
+        <p>This is timed and your score will be a scoreboard if you feel you can do it again faster for next time!</p>
+        
+        <button id="start-quiz">Start Quiz!</button>
+        <br>
+        <!-- Buttons start disabled -->
+        <div class="questions">
+            <button id="buttonA">A</button>
+            <button id="buttonB">B</button>
+            <button id="buttonC">C</button>
+            <button id="buttonD">D</button>
+        </div>
+    </header>
+
 </body>
 <script src="assets/js/script.js"></script>
 </html>
