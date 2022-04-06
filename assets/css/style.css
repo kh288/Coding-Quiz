@@ -46,16 +46,28 @@ header {
 section {
     display: grid;
 }
+/* a:hover {
+    color: white;
+    text-decoration: none;
+}
+a {
+    color: #222;
+    text-decoration: none;
+    background-color: red;
+    padding: ;
+} */
 /* , #submit-score */
 #input-form {
     display: none;
 }
-button:hover {
+button:hover, a:hover {
     outline: solid .125em white;
     color: white;
     outline-offset: .125em;
 }
-button {
+button, a {
+    font-size: 1em;
+    text-decoration: none;
     background-color: #d8a450;
     color: #222;
     padding: .5em;

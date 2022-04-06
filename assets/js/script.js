@@ -111,7 +111,7 @@ function questionSetup() {
         questionText.setAttribute("style", "display: initial");
         inputForm.setAttribute("style", "display: initial");
         scoreAmount = correctAnswers * 25;
-        questionText.textContent = "You got " + correctAnswers + " out of 4 answers correct, your score was " + scoreAmount + " percent " + "with a time of: " + timeLeft + ".";
+        questionText.textContent = "You got " + correctAnswers + " out of 4 answers correct, your score was " + scoreAmount + "% " + "with a time of " + timeLeft + ".";
         return;
     }
     // Eventually get a for loop to iterate through each question to parse through.
