@@ -14,11 +14,15 @@ var buttonB = document.querySelector("#buttonB");
 var buttonC = document.querySelector("#buttonC");
 var buttonD = document.querySelector("#buttonD");
 
+var timer = document.querySelector("#timer");
+var timeLeft = 5;
+
 // var questionCounter = 0;
 var currentQuestion = 1;
 
 var correctAnswers = 0;
 var incorrectAnswers = 0;
+var scoreAmount = 0;
 
 // Store questions in array AND their respective 
 var question1 = {
@@ -105,9 +109,9 @@ function questionSetup() {
         questionGroup.textContent = "Please enter your name or initials to track your score!";
         // Set display to turn back on and change it to different text
         questionText.setAttribute("style", "display: initial");
-        questionText.textContent = "Correct Answers: " + correctAnswers + ". Incorrect answers: " + incorrectAnswers + ".";
-        
         inputForm.setAttribute("style", "display: initial");
+        scoreAmount = correctAnswers * 25;
+        questionText.textContent = "You got " + correctAnswers + " out of 4 answers correct, your score was " + scoreAmount + " percent " + "with a time of: " + timeLeft + ".";
         return;
     }
     // Eventually get a for loop to iterate through each question to parse through.
@@ -186,13 +190,30 @@ function clickListen() {
 function startQuiz(event) {
     event.preventDefault();
     // QUIZ MODE ACTIVATE
-
+    var counter = setInterval(function() {
+        timer.textContent = timeLeft;
+        
+        // stop timer if either of these circumstances happen
+        // User completed quiz before timer ran out
+        // Timer ran out on the player
+        if (timeLeft === 0) {
+            clearInterval(counter);
+            currentQuestion = 5;
+            console.log("Ran out of time!");
+        }
+        if (currentQuestion === 5) {
+            clearInterval(counter);
+            questionSetup();
+        }
+        timeLeft--;
+    }, 1000);
     // Hide quiz button once pressed
     startQuizBtn.setAttribute("style", "display: none");
     // Show regular ABCD button set once clicked
     questionGroup.setAttribute("style", "display: inline-grid");
     document.querySelector(".question-text").setAttribute("style", "display: none");
-
+    
+    
     questionSetup();
     console.log("Successfully Clicked");
 }
@@ -200,7 +221,21 @@ function startQuiz(event) {
 function saveScoreToBrowser(event) {
     event.preventDefault();
     // console.log(personName.value.trim());
+    // console.log(scoreAmount = correctAnswers * 25);
+    
+
+    // scoreObj = {
+    //     name : personName.value.trim(),
+    //     time : timeLeft,
+    //     score : correctAnswers * 25,
+    // }
+
+    // localStorage.setItem("Name", personName.value.trim());
+
     inputForm.setAttribute("style", "display: none");
+    questionText.setAttribute("style", "display: none");
+    headerText.textContent = "Thanks for playing!"
+    questionGroup.textContent = "Check out the High scores page on the top to see your scores!"
 
 }
 
