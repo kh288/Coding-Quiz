@@ -15,7 +15,7 @@ var buttonC = document.querySelector("#buttonC");
 var buttonD = document.querySelector("#buttonD");
 
 var timer = document.querySelector("#timer");
-var timeLeft = 5;
+var timeLeft = 60;
 
 // var questionCounter = 0;
 var currentQuestion = 1;
@@ -213,7 +213,6 @@ function startQuiz(event) {
     questionGroup.setAttribute("style", "display: inline-grid");
     document.querySelector(".question-text").setAttribute("style", "display: none");
     
-    
     questionSetup();
     console.log("Successfully Clicked");
 }
@@ -224,19 +223,20 @@ function saveScoreToBrowser(event) {
     // console.log(scoreAmount = correctAnswers * 25);
     
 
-    // scoreObj = {
-    //     name : personName.value.trim(),
-    //     time : timeLeft,
-    //     score : correctAnswers * 25,
-    // }
+    var scoreObj = {
+        name : personName.value.trim(),
+        time : timeLeft,
+        score : correctAnswers * 25,
+    }
+    // console.log("personName: " + personName.value.trim());
+    localStorage.setItem("Score: " + personName.value.trim(), JSON.stringify(scoreObj));
 
-    // localStorage.setItem("Name", personName.value.trim());
+    // localStorage.setItem("personName.value.trim()", personName.value.trim());
 
     inputForm.setAttribute("style", "display: none");
     questionText.setAttribute("style", "display: none");
     headerText.textContent = "Thanks for playing!"
     questionGroup.textContent = "Check out the High scores page on the top to see your scores!"
-
 }
 
 // activates upon start quiz button click
