@@ -9,44 +9,48 @@
     <title>Coding Quiz High Scores</title>
 </head>
 <body>
+    <!-- Link to main page -->
     <nav>
         <a href="index.html">Main Page</a>
     </nav>
-
+    <!-- Main header -->
     <header>
         <h1>High Scores</h1>
+        <!-- this raised will be used to hide and show when needed -->
         <div id="raised">
             <p id="high-scores"></p>
             <form id="remove-button-form">
                 <button id="remove-score" style="line-height: .65em;">X</button>
             </form>
         </div>
-       
     </header>
 </body>
 
 <script>
 // var highScores = ;
 var userScore = JSON.parse(localStorage.getItem("score"));
-
+// Declaring variables from page
 var removeButtonForm = document.querySelector("#remove-button-form");
 var printScore = document.querySelector("#high-scores");
 var removeButton = document.querySelector("#remove-score");
 var scorePane = document.querySelector("#raised");
 
+// display and set textcontent of the p tag
 function displayHighScores() {
+    // if the local storage has anyhting in it, then it'll show the score pane
+    // Also will show the score in a line format
     if (localStorage.getItem("score")) {
         scorePane.setAttribute("style", "display: flex");
         printScore.textContent = "Name: " + userScore.name + " | Score: " + userScore.score + "% | Time: " + userScore.time;
     }
 }
-
+// Upon click, remove the score pane
 function removeScore(event) {
     event.preventDefault();
     scorePane.setAttribute("style", "display: none");
     localStorage.removeItem("score");
 }
-// If local storage stores into this variable is truthy
+// If local storage stores into this variable is truthy then allow this to run
 if (userScore) {
     displayHighScores();
     removeButtonForm.addEventListener("click", removeScore);

@@ -86,13 +86,10 @@ button, a {
 }
 #start-quiz {
     display: initial;
-    /* change display to none in code when quiz starts */
 }
 #buttonA, #buttonB, #buttonC, #buttonD {
     min-width: max-content;
 }
 .questions {
     display: none;
-    /* display: inline-grid; */
-    /* set to inline grid when "enabled" */
 }
