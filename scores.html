@@ -17,7 +17,9 @@
         <h1>High Scores</h1>
         <div id="raised">
             <p id="high-scores"></p>
-            <button id="remove-score" style="line-height: .65em;">X</button>
+            <form id="remove-button-form">
+                <button id="remove-score" style="line-height: .65em;">X</button>
+            </form>
         </div>
        
     </header>
@@ -25,15 +27,16 @@
 
 <script>
 // var highScores = ;
-var printScore = document.querySelector("#high-scores");
 var userScore = JSON.parse(localStorage.getItem("score"));
+
+var removeButtonForm = document.querySelector("#remove-button-form");
+var printScore = document.querySelector("#high-scores");
 var removeButton = document.querySelector("#remove-score");
-var scorePane = document.querySelector("raised");
+var scorePane = document.querySelector("#raised");
 
 function displayHighScores() {
     if (localStorage.getItem("score")) {
-        console.log(JSON.parse(localStorage.getItem("score")));
-        // document.querySelector("#high-scores").appendChild(newDiv, id);
+        scorePane.setAttribute("style", "display: flex");
         printScore.textContent = "Name: " + userScore.name + " | Score: " + userScore.score + "% | Time: " + userScore.time;
     }
 }
@@ -43,9 +46,10 @@ function removeScore(event) {
     scorePane.setAttribute("style", "display: none");
     localStorage.removeItem("score");
 }
-
-displayHighScores();
-removeButton.addEventListener("click", removeScore);
-
+// If local storage stores into this variable is truthy
+if (userScore) {
+    displayHighScores();
+    removeButtonForm.addEventListener("click", removeScore);
+}
 </script>
 </html>
