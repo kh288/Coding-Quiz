@@ -1,39 +1,12 @@
-// Question/Answer Format
-// var question1 = "How do you create a variable called 'myVariable' in Javascript?";
-// var question1arr = [
-//     "A: myVariable = 0;",
-//     "B: myVariable + 0;",
-//     "C: var myVariable = 0;",
-//     "D: var myVariable + 0;"];
-
-// var question2 = "Whats a function?";
-// var question2arr = [
-//     "A: a collection of code to perform",
-//     "B: huh",
-//     "C: what",
-//     "D: not this one"
-// ];
-
-// var question3 = "";
-// var question3arr = [
-//     "A: ",
-//     "B: ",
-//     "C: ",
-//     "D: "
-// ];
-
-// var question4 = "";
-// var question4arr = [
-//     "A: ",
-//     "B: ",
-//     "C: ",
-//     "D: "
-// ];
-
 var headerText = document.querySelector("#header");
-// var questionText = document.querySelector(".question-text");
-
 var startQuizBtn = document.querySelector("#start-quiz");
+
+
+var inputForm = document.querySelector("#input-form");
+var personName = document.querySelector("#person-name");
+var submitScore = document.querySelector("#submit-score");
+
+var questionText = document.querySelector(".question-text");
 
 var questionGroup = document.querySelector(".questions");
 var buttonA = document.querySelector("#buttonA");
@@ -129,9 +102,13 @@ function questionSetup() {
     if (currentQuestion === 5) {
         // code that brings to entering name for scoreboard
         headerText.textContent = "Quiz done! Here's your results";
-        questionGroup.setAttribute("style", "display: none");
-        document.querySelector(".question-text").setAttribute("style", "display: initial");
-        document.querySelector(".question-text").textContent = "Correct Answers: " + correctAnswers + ". Incorrect answers: " + incorrectAnswers + ".";
+        questionGroup.textContent = "Please enter your name or initials to track your score!";
+        // Set display to turn back on and change it to different text
+        questionText.setAttribute("style", "display: initial");
+        questionText.textContent = "Correct Answers: " + correctAnswers + ". Incorrect answers: " + incorrectAnswers + ".";
+        
+        inputForm.setAttribute("style", "display: initial");
+        return;
     }
     // Eventually get a for loop to iterate through each question to parse through.
     // OR make it so the correct answer is the LINK to the next set of questions
@@ -220,5 +197,13 @@ function startQuiz(event) {
     console.log("Successfully Clicked");
 }
 
+function saveScoreToBrowser(event) {
+    event.preventDefault();
+    // console.log(personName.value.trim());
+    inputForm.setAttribute("style", "display: none");
+
+}
+
 // activates upon start quiz button click
 startQuizBtn.addEventListener("click", startQuiz);
+inputForm.addEventListener("submit", saveScoreToBrowser);
