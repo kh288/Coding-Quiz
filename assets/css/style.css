@@ -14,6 +14,10 @@ h1 {
     font-size: x-large;
     font-weight: bold;
 }
+input:hover {
+    outline: solid .125em white;
+    outline-offset: .125em;
+}
 input {
     color: #ccc;
     background-color: #222;
