@@ -222,7 +222,3 @@ function startQuiz(event) {
 
 // activates upon start quiz button click
 startQuizBtn.addEventListener("click", startQuiz);
-// buttonA.addEventListener("click", questionSelect);
-// buttonB.addEventListener("click", questionSelect);
-// buttonC.addEventListener("click", questionSelect);
-// buttonD.addEventListener("click", questionSelect);
