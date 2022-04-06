@@ -15,10 +15,37 @@
 
     <header>
         <h1>High Scores</h1>
-
-        <div>
-            
+        <div id="raised">
+            <p id="high-scores"></p>
+            <button id="remove-score" style="line-height: .65em;">X</button>
         </div>
+       
     </header>
 </body>
+
+<script>
+// var highScores = ;
+var printScore = document.querySelector("#high-scores");
+var userScore = JSON.parse(localStorage.getItem("score"));
+var removeButton = document.querySelector("#remove-score");
+var scorePane = document.querySelector("raised");
+
+function displayHighScores() {
+    if (localStorage.getItem("score")) {
+        console.log(JSON.parse(localStorage.getItem("score")));
+        // document.querySelector("#high-scores").appendChild(newDiv, id);
+        printScore.textContent = "Name: " + userScore.name + " | Score: " + userScore.score + "% | Time: " + userScore.time;
+    }
+}
+
+function removeScore(event) {
+    event.preventDefault();
+    scorePane.setAttribute("style", "display: none");
+    localStorage.removeItem("score");
+}
+
+displayHighScores();
+removeButton.addEventListener("click", removeScore);
+
+</script>
 </html>

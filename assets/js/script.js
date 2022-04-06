@@ -219,17 +219,14 @@ function startQuiz(event) {
 
 function saveScoreToBrowser(event) {
     event.preventDefault();
-    // console.log(personName.value.trim());
-    // console.log(scoreAmount = correctAnswers * 25);
-    
-
+    // Stores the user score as an object with name, timeleft, and correct answers in percentage form
     var scoreObj = {
         name : personName.value.trim(),
         time : timeLeft,
         score : correctAnswers * 25,
     }
     // console.log("personName: " + personName.value.trim());
-    localStorage.setItem("Score: " + personName.value.trim(), JSON.stringify(scoreObj));
+    localStorage.setItem("score", JSON.stringify(scoreObj));
 
     // localStorage.setItem("personName.value.trim()", personName.value.trim());
 

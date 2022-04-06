@@ -25,6 +25,15 @@ input {
     padding: .5em;
     border-radius: .5em;
 }
+#raised {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem;
+    background-color: #484848;
+    border-radius: 1em;
+}
+
 p {
     line-height: 1.5em;
 }
@@ -36,8 +45,8 @@ section, header, nav {
     background-color: #383838;
     padding: 1rem;
     max-width: 60rem;
-    margin: 1em auto;
     border-radius: .5em;
+    margin: 1em auto;
 }
 header {
     text-align: center;
@@ -66,7 +75,6 @@ button:hover, a:hover {
     outline-offset: .125em;
 }
 button, a {
-    font-size: 1em;
     text-decoration: none;
     background-color: #d8a450;
     color: #222;
